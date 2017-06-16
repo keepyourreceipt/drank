@@ -29,7 +29,7 @@ class MasterTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return recipies.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -38,7 +38,7 @@ class MasterTableViewController: UITableViewController {
         let cellUILabel = cell.viewWithTag(1) as? UILabel
         
         if let label = cellUILabel {
-            label.text = "This is a label"
+            label.text = recipies[indexPath.row].title
         }
 
         return cell

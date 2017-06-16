@@ -12,6 +12,7 @@
 		2B18740D1EF4707300D0DB57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B18740C1EF4707300D0DB57 /* Assets.xcassets */; };
 		2B1874101EF4707300D0DB57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B18740E1EF4707300D0DB57 /* LaunchScreen.storyboard */; };
 		2B1874181EF471EF00D0DB57 /* MasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1874171EF471EF00D0DB57 /* MasterTableViewController.swift */; };
+		2B18741A1EF479C800D0DB57 /* RecipeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1874191EF479C800D0DB57 /* RecipeProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		2B18740F1EF4707300D0DB57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B1874111EF4707300D0DB57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B1874171EF471EF00D0DB57 /* MasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewController.swift; sourceTree = "<group>"; };
+		2B1874191EF479C800D0DB57 /* RecipeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				2B1874051EF4707300D0DB57 /* AppDelegate.swift */,
+				2B1874191EF479C800D0DB57 /* RecipeProvider.swift */,
 				2B1874171EF471EF00D0DB57 /* MasterTableViewController.swift */,
 				2B1874091EF4707300D0DB57 /* Main.storyboard */,
 				2B18740C1EF4707300D0DB57 /* Assets.xcassets */,
@@ -137,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B1874061EF4707300D0DB57 /* AppDelegate.swift in Sources */,
+				2B18741A1EF479C800D0DB57 /* RecipeProvider.swift in Sources */,
 				2B1874181EF471EF00D0DB57 /* MasterTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
