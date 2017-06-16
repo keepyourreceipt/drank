@@ -10,19 +10,6 @@ import UIKit
 
 class MasterTableViewController: UITableViewController {
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,7 +33,7 @@ class MasterTableViewController: UITableViewController {
     }
     
     
-
+    
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) -> Recipe {
 
@@ -58,16 +45,15 @@ class MasterTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         
         let destination = segue.destination as? DetailViewController
         
-        if let detailViewController = destination {
-            detailViewController.recipeTitleText = "ZZZZZ"
+        if let indexPath = tableView.indexPathForSelectedRow {
+            if let detailViewController = destination {
+                detailViewController.recipeTitleText = recipies[indexPath.row].title
+            }
         }
-        
-        
+    
     }
-
 
 }
