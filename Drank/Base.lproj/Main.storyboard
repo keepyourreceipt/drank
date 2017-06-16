@@ -60,7 +60,7 @@
         <!--Deatil View-->
         <scene sceneID="dBH-ru-gbF">
             <objects>
-                <viewController title="Deatil View" id="fXo-T2-LTh" sceneMemberID="viewController">
+                <viewController title="Deatil View" id="fXo-T2-LTh" customClass="DetailViewController" customModule="Drank" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HGv-t9-Kj3"/>
                         <viewControllerLayoutGuide type="bottom" id="HZE-Yy-VXa"/>
@@ -79,6 +79,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="recipeTitle" destination="ZSk-T5-e5n" id="NWK-rN-ZBY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dz3-4J-rZF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

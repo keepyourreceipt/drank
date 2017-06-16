@@ -9,6 +9,7 @@
 import UIKit
 
 class MasterTableViewController: UITableViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,23 +45,29 @@ class MasterTableViewController: UITableViewController {
         return cell
     }
     
+    
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-
-    /*
     // MARK: - Navigation
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) -> Recipe {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+        let selectedRecipe = Recipe(title: recipies[indexPath.row].title, ingredients: recipies[indexPath.row].ingredients, directions: recipies[indexPath.row].directions)
+        
+        return selectedRecipe
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        let destination = segue.destination as? DetailViewController
+        
+        if let detailViewController = destination {
+            detailViewController.recipeTitleText = "ZZZZZ"
+        }
+        
+        
     }
-    */
+
 
 }
