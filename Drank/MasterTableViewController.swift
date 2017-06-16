@@ -35,13 +35,14 @@ class MasterTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MasterTableViewCell", for: indexPath)
         
-        let cellLabel = cell.viewWithTag(1) as! UILabel
-        cellLabel.text = "Something"
-       
+        let cellUILabel = cell.viewWithTag(1) as? UILabel
+        
+        if let label = cellUILabel {
+            label.text = "This is a label"
+        }
 
         return cell
     }
-    
     
 
     /*
