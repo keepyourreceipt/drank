@@ -11,6 +11,17 @@ import UIKit
 class MasterTableViewController: UITableViewController {
     
     
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    override func viewDidLoad() {
+        searchController.searchResultsUpdater = self as? UISearchResultsUpdating
+        searchController.dimsBackgroundDuringPresentation = false
+        
+        definesPresentationContext = true
+        
+        tableView.tableHeaderView = searchController.searchBar
+    }
+    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
