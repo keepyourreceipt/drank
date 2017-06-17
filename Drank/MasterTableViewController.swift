@@ -48,7 +48,7 @@ class MasterTableViewController: UITableViewController {
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) -> Recipe {
 
-        let selectedRecipe = Recipe(title: recipies[indexPath.row].title, ingredients: recipies[indexPath.row].ingredients, directions: recipies[indexPath.row].directions)
+        let selectedRecipe = Recipe(title: recipies[indexPath.row].title, imageName: recipies[indexPath.row].imageName, ingredients: recipies[indexPath.row].ingredients, directions: recipies[indexPath.row].directions)
         
         return selectedRecipe
     }
@@ -62,6 +62,9 @@ class MasterTableViewController: UITableViewController {
         if let indexPath = tableView.indexPathForSelectedRow {
             if let detailViewController = destination {
                 detailViewController.recipeTitleText = recipies[indexPath.row].title
+                detailViewController.recipeImageName = recipies[indexPath.row].imageName
+                detailViewController.recipeDirectionsText = recipies[indexPath.row].directions
+                
             }
         }
     
