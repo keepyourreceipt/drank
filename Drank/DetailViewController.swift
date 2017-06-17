@@ -25,6 +25,10 @@ class DetailViewController: UIViewController {
         // Setup view
         recipeTitle.text = recipeTitleText
         recipeImage.image = UIImage.init(named: recipeImageName)
+
+        recipeDirections.lineBreakMode = .byWordWrapping
+        recipeDirections.numberOfLines = 0
+        
         recipeDirections.text = recipeDirectionsText
     }
 
