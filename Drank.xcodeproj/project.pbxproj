@@ -307,6 +307,7 @@
 				2B1874161EF4707300D0DB57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

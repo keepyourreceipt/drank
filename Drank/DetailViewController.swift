@@ -30,6 +30,7 @@ class DetailViewController: UIViewController {
         recipeDirections.numberOfLines = 0
         
         recipeDirections.text = recipeDirectionsText
+        
     }
 
 
