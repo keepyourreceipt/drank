@@ -10,16 +10,19 @@ import UIKit
 
 class MasterTableViewController: UITableViewController {
     
-    
+    // Get a reference to the UISearchcontroller
     let searchController = UISearchController(searchResultsController: nil)
     
+    
     override func viewDidLoad() {
-        searchController.searchResultsUpdater = self as? UISearchResultsUpdating
+        // Add search bar to the top of the table view
+        tableView.tableHeaderView = searchController.searchBar
+        
+        // Set the background dim function
         searchController.dimsBackgroundDuringPresentation = false
         
-        definesPresentationContext = true
-        
-        tableView.tableHeaderView = searchController.searchBar
+        // Assign search results updater object to this class (self)
+        searchController.searchResultsUpdater = self
     }
     
     // MARK: - Table view data source
@@ -67,7 +70,15 @@ class MasterTableViewController: UITableViewController {
                 
             }
         }
-    
     }
+}
 
+
+// Extend this class to conform to UISearchResultsUpdating protocol
+extension MasterTableViewController: UISearchResultsUpdating {
+    
+    // Create a function to update text based on search bar content
+    func updateSearchResults(for searchController: UISearchController) {
+        print(searchController.searchBar.text!)
+    }
 }
