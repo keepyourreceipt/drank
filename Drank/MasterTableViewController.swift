@@ -13,6 +13,10 @@ class MasterTableViewController: UITableViewController {
     // Get a reference to the UISearchcontroller
     let searchController = UISearchController(searchResultsController: nil)
     
+    // Get a reference to the recipe data source
+    let recipeDataSource = RecipeDataSource()
+    
+    let recipies = RecipeDataSource().recipies
     
     override func viewDidLoad() {
         // Add search bar to the top of the table view
@@ -23,35 +27,14 @@ class MasterTableViewController: UITableViewController {
         
         // Assign search results updater object to this class (self)
         searchController.searchResultsUpdater = self
-    }
-    
-    // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipies.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MasterTableViewCell", for: indexPath)
         
-        let cellUILabel = cell.viewWithTag(1) as? UILabel
-        
-        if let label = cellUILabel {
-            label.text = recipies[indexPath.row].title
-        }
-
-        return cell
+        tableView.dataSource = recipeDataSource
     }
-    
-    
-    
+        
     // MARK: - Navigation
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) -> Recipe {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) -> RecipeDataSource.Recipe {
 
-        let selectedRecipe = Recipe(title: recipies[indexPath.row].title, imageName: recipies[indexPath.row].imageName, ingredients: recipies[indexPath.row].ingredients, directions: recipies[indexPath.row].directions)
+        let selectedRecipe = RecipeDataSource.Recipe(title: recipies[indexPath.row].title, imageName: recipies[indexPath.row].imageName, ingredients: recipies[indexPath.row].ingredients,directions: recipies[indexPath.row].directions)
         
         return selectedRecipe
     }
@@ -67,9 +50,9 @@ class MasterTableViewController: UITableViewController {
                 detailViewController.recipeTitleText = recipies[indexPath.row].title
                 detailViewController.recipeImageName = recipies[indexPath.row].imageName
                 detailViewController.recipeDirectionsText = recipies[indexPath.row].directions
-                
             }
         }
+
     }
 }
 
