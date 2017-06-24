@@ -21,8 +21,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Setup view
+        
         recipeTitle.text = recipeTitleText
         recipeImage.image = UIImage.init(named: recipeImageName)
 
@@ -32,6 +31,4 @@ class DetailViewController: UIViewController {
         recipeDirections.text = recipeDirectionsText
         
     }
-
-
 }

@@ -10,28 +10,24 @@ import UIKit
 
 class MasterTableViewController: UITableViewController {
     
-    // Get a reference to the UISearchcontroller
     let searchController = UISearchController(searchResultsController: nil)
-    
-    // Get a reference to the recipe data source
     let recipeDataSource = RecipeDataSource()
     
     let recipies = RecipeDataSource().recipies
     
     override func viewDidLoad() {
-        // Add search bar to the top of the table view
+        
         tableView.tableHeaderView = searchController.searchBar
         
-        // Set the background dim function
         searchController.dimsBackgroundDuringPresentation = false
-        
-        // Assign search results updater object to this class (self)
         searchController.searchResultsUpdater = self
         
         tableView.dataSource = recipeDataSource
     }
+    
+    
         
-    // MARK: - Navigation
+    // MARK: - View Navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) -> RecipeDataSource.Recipe {
 
         let selectedRecipe = RecipeDataSource.Recipe(title: recipies[indexPath.row].title, imageName: recipies[indexPath.row].imageName, ingredients: recipies[indexPath.row].ingredients,directions: recipies[indexPath.row].directions)
@@ -39,9 +35,7 @@ class MasterTableViewController: UITableViewController {
         return selectedRecipe
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
         
         let destination = segue.destination as? DetailViewController
         
@@ -57,11 +51,11 @@ class MasterTableViewController: UITableViewController {
 }
 
 
-// Extend this class to conform to UISearchResultsUpdating protocol
+
+// MARK - Update search results
 extension MasterTableViewController: UISearchResultsUpdating {
     
-    // Create a function to update text based on search bar content
     func updateSearchResults(for searchController: UISearchController) {
-        print(searchController.searchBar.text!)
+        // print(searchController.searchBar.text!)
     }
 }

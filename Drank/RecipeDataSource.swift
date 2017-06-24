@@ -10,8 +10,7 @@ import UIKit
 
 class RecipeDataSource: NSObject, UITableViewDataSource {
     
-    // MARK - Data source for recipies
-    
+    // MARK - Build native data source for recipies
     struct Recipe {
         let title: String
         let imageName: String
@@ -28,8 +27,7 @@ class RecipeDataSource: NSObject, UITableViewDataSource {
         ]
     
     
-    // MARK - Table view structure
-    
+    // MARK - Setup table view structure and create cells
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
