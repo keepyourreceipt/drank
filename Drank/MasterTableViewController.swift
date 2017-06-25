@@ -58,10 +58,11 @@ extension MasterTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchTerm = searchController.searchBar.text!
         
+        recipeDataSource.recipies.removeAll()
+        
         for recipe in recipies {
             if recipe.title.lowercased().range(of: searchTerm.lowercased()) != nil {
                 recipeDataSource.recipies.append(recipe)
-                print( recipies.count )
             }
         }
         

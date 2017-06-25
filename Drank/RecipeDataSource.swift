@@ -18,7 +18,9 @@ class RecipeDataSource: NSObject, UITableViewDataSource {
         let directions: String
     }
     
-    var recipies = [
+    var recipies = [Recipe]()
+    
+    let recipiesReference = [
         Recipe(title: "Rum and Coke", imageName: "rumandcoke", ingredients: ["Rum", "Coke"], directions: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
         Recipe(title: "Rum Runner", imageName: "rumrunner", ingredients: ["Rum", "Juice", "Other stuff"], directions: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut."),
         Recipe(title: "Tom Colins", imageName: "rumandcoke", ingredients: ["Rum", "Coke"], directions: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
@@ -42,6 +44,10 @@ class RecipeDataSource: NSObject, UITableViewDataSource {
         cell.textLabel?.text = recipies[indexPath.row].title
         
         return cell
+    }
+    
+    override init() {
+        self.recipies = recipiesReference
     }
 }
 
