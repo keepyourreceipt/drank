@@ -13,7 +13,7 @@ class MasterTableViewController: UITableViewController {
     let searchController = UISearchController(searchResultsController: nil)
     let recipeDataSource = RecipeDataSource()
     
-    let recipies = RecipeDataSource().recipies
+    var recipies = RecipeDataSource().recipies
     
     override func viewDidLoad() {
         
@@ -57,10 +57,14 @@ extension MasterTableViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         let searchTerm = searchController.searchBar.text!
+        
         for recipe in recipies {
-            if recipe.title.lowercased().range(of:searchTerm.lowercased()) != nil {
-                
+            if recipe.title.lowercased().range(of: searchTerm.lowercased()) != nil {
+                recipeDataSource.recipies.append(recipe)
+                print( recipies.count )
             }
         }
+        
+        tableView.reloadData()
     }
 }
