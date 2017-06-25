@@ -28,6 +28,7 @@ class MasterTableViewController: UITableViewController {
     
         
     // MARK: - View Navigation
+    // TO DO: resolve incorrect details page loading on click after search
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) -> RecipeDataSource.Recipe {
 
         let selectedRecipe = RecipeDataSource.Recipe(title: recipies[indexPath.row].title, imageName: recipies[indexPath.row].imageName, ingredients: recipies[indexPath.row].ingredients,directions: recipies[indexPath.row].directions)
@@ -53,6 +54,10 @@ class MasterTableViewController: UITableViewController {
 
 
 // MARK - Update search results
+// TO DO: Show no posts found message if nothing found
+// TO DO: Restore master view on search cancel
+// TO DO: Move search to it's own controller so that the scroll position of the user
+// will remain intact on search and cancel - moving from search to scrolled master view
 extension MasterTableViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
