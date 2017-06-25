@@ -8,14 +8,19 @@
 
 import UIKit
 
-class SearchTableViewController: UITableViewController {
+class SearchTableViewController: UITableViewController, UISearchBarDelegate {
 
     let recipeDataSource = RecipeDataSource()
-    var recipies = RecipeDataSource().recipies
+    let recipeReference = RecipeDataSource().recipies
     
-    let searchResultsDataSource = SearchRecultsDataSource()
+    var searchResults = RecipeDataSource().recipies
     
     let searchController = UISearchController(searchResultsController: nil)
+    
+    override func viewWillAppear(_ animated: Bool) {
+        searchResults.removeAll()
+        searchController.isActive = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +30,31 @@ class SearchTableViewController: UITableViewController {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
         
-        tableView.dataSource = searchResultsDataSource
-        
+        tableView.dataSource = self
     }
+    
+    // MARK - Setup table view structure and create cells
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResults.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultsTableCell", for: indexPath)
+        
+        let cellLabel = cell.viewWithTag(2) as! UILabel
+        cellLabel.text = searchResults[indexPath.row].title
+        
+        return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        searchController.isActive = false
+    }
+    
 }
 
 
@@ -36,11 +63,11 @@ extension SearchTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchTerm = searchController.searchBar.text!
         
-        recipeDataSource.recipies.removeAll()
+        searchResults.removeAll()
         
-        for recipe in recipies {
+        for recipe in recipeReference {
             if recipe.title.lowercased().range(of: searchTerm.lowercased()) != nil {
-                recipeDataSource.recipies.append(recipe)
+                searchResults.append(recipe)
             }
         }
         

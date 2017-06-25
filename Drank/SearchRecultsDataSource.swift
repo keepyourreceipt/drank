@@ -10,6 +10,9 @@ import UIKit
 
 class SearchRecultsDataSource: NSObject, UITableViewDataSource {
     
+    let recipeDataSource = RecipeDataSource()
+    var searchResults = RecipeDataSource().recipies
+    
     // MARK - Setup table view structure and create cells
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -22,7 +25,8 @@ class SearchRecultsDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultsTableCell", for: indexPath)
         
-        cell.textLabel?.text = "Cell Title"
+        let cellLabel = cell.viewWithTag(2) as! UILabel
+        cellLabel.text = "This is a label"
         
         return cell
     }
