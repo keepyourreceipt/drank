@@ -46,11 +46,59 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Master View" id="6rP-bn-c8k">
                         <barButtonItem key="backBarButtonItem" title="Back" id="79b-05-aYo"/>
+                        <barButtonItem key="rightBarButtonItem" title="Search" id="mTy-QL-5Gj">
+                            <connections>
+                                <segue destination="v2P-Nc-s3u" kind="presentation" id="HST-Fa-3M2"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KIJ-Xp-JDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1032.8" y="147.97601199400302"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="0cg-bg-DXS">
+            <objects>
+                <tableViewController id="3tw-97-M7v" customClass="SearchTableViewController" customModule="Drank" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="DYm-Ta-j1l">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultsTableCell" id="Qkb-ax-CnV">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qkb-ax-CnV" id="G9A-e0-Jg2">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRA-cx-0pp">
+                                            <rect key="frame" x="20" y="12" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="fXo-T2-LTh" kind="show" id="rTY-Em-FaZ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3tw-97-M7v" id="w0H-bU-SJp"/>
+                            <outlet property="delegate" destination="3tw-97-M7v" id="jZl-Qo-4CE"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Search" id="nwe-xS-570">
+                        <barButtonItem key="leftBarButtonItem" id="Vyh-51-fQZ"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="baq-io-zdl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2052" y="1013"/>
         </scene>
         <!--Deatil View-->
         <scene sceneID="dBH-ru-gbF">
@@ -126,7 +174,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dz3-4J-rZF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1845.5999999999999" y="147.97601199400302"/>
+            <point key="canvasLocation" x="3207" y="409"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nbJ-GQ-eC8">
@@ -144,10 +192,31 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dJw-9T-BCN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="193" y="148"/>
+            <point key="canvasLocation" x="-7" y="148"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="Qsp-FC-vjo">
+            <objects>
+                <navigationController title="Search" automaticallyAdjustsScrollViewInsets="NO" id="v2P-Nc-s3u" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qey-JO-kUM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3tw-97-M7v" kind="relationship" relationship="rootViewController" id="5K1-zm-YHm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lUF-we-7UA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1033" y="1014"/>
         </scene>
     </scenes>
     <resources>
         <image name="rumandcoke" width="282" height="304"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="rTY-Em-FaZ"/>
+    </inferredMetricsTieBreakers>
 </document>

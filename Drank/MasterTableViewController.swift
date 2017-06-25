@@ -10,23 +10,16 @@ import UIKit
 
 class MasterTableViewController: UITableViewController {
     
-    let searchController = UISearchController(searchResultsController: nil)
-    let recipeDataSource = RecipeDataSource()
-    
+    var recipeDataSource = RecipeDataSource()
     var recipies = RecipeDataSource().recipies
     
     override func viewDidLoad() {
-        
-        tableView.tableHeaderView = searchController.searchBar
-        
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchResultsUpdater = self
+        super.viewDidLoad()
         
         tableView.dataSource = recipeDataSource
     }
     
     
-        
     // MARK: - View Navigation
     // TO DO: resolve incorrect details page loading on click after search
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) -> RecipeDataSource.Recipe {
@@ -48,29 +41,5 @@ class MasterTableViewController: UITableViewController {
             }
         }
 
-    }
-}
-
-
-
-// MARK - Update search results
-// TO DO: Show no posts found message if nothing found
-// TO DO: Restore master view on search cancel
-// TO DO: Move search to it's own controller so that the scroll position of the user
-// will remain intact on search and cancel - moving from search to scrolled master view
-extension MasterTableViewController: UISearchResultsUpdating {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        let searchTerm = searchController.searchBar.text!
-        
-        recipeDataSource.recipies.removeAll()
-        
-        for recipe in recipies {
-            if recipe.title.lowercased().range(of: searchTerm.lowercased()) != nil {
-                recipeDataSource.recipies.append(recipe)
-            }
-        }
-        
-        tableView.reloadData()
     }
 }

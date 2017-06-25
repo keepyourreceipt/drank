@@ -14,6 +14,8 @@
 		2B1874181EF471EF00D0DB57 /* MasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1874171EF471EF00D0DB57 /* MasterTableViewController.swift */; };
 		2B18741C1EF4862800D0DB57 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B18741B1EF4862800D0DB57 /* DetailViewController.swift */; };
 		BC4F02EE1EFF1AC400FF7596 /* RecipeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4F02ED1EFF1AC400FF7596 /* RecipeDataSource.swift */; };
+		BC979B4F1F005BB000F2A432 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC979B4E1F005BB000F2A432 /* SearchTableViewController.swift */; };
+		BC979B511F005DF000F2A432 /* SearchRecultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC979B501F005DF000F2A432 /* SearchRecultsDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		2B1874171EF471EF00D0DB57 /* MasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewController.swift; sourceTree = "<group>"; };
 		2B18741B1EF4862800D0DB57 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BC4F02ED1EFF1AC400FF7596 /* RecipeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDataSource.swift; sourceTree = "<group>"; };
+		BC979B4E1F005BB000F2A432 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		BC979B501F005DF000F2A432 /* SearchRecultsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRecultsDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 			children = (
 				2B1874171EF471EF00D0DB57 /* MasterTableViewController.swift */,
 				2B18741B1EF4862800D0DB57 /* DetailViewController.swift */,
+				BC979B4E1F005BB000F2A432 /* SearchTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -82,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				BC4F02ED1EFF1AC400FF7596 /* RecipeDataSource.swift */,
+				BC979B501F005DF000F2A432 /* SearchRecultsDataSource.swift */,
 			);
 			name = "Data Sources";
 			sourceTree = "<group>";
@@ -159,7 +165,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B1874061EF4707300D0DB57 /* AppDelegate.swift in Sources */,
+				BC979B511F005DF000F2A432 /* SearchRecultsDataSource.swift in Sources */,
 				2B1874181EF471EF00D0DB57 /* MasterTableViewController.swift in Sources */,
+				BC979B4F1F005BB000F2A432 /* SearchTableViewController.swift in Sources */,
 				BC4F02EE1EFF1AC400FF7596 /* RecipeDataSource.swift in Sources */,
 				2B18741C1EF4862800D0DB57 /* DetailViewController.swift in Sources */,
 			);
