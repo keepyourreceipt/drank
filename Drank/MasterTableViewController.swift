@@ -56,6 +56,11 @@ class MasterTableViewController: UITableViewController {
 extension MasterTableViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        // print(searchController.searchBar.text!)
+        let searchTerm = searchController.searchBar.text!
+        for recipe in recipies {
+            if recipe.title.lowercased().range(of:searchTerm.lowercased()) != nil {
+                
+            }
+        }
     }
 }
