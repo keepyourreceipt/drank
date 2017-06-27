@@ -10,25 +10,29 @@ import UIKit
 
 class MasterTableViewController: UITableViewController, UISearchBarDelegate {
     
+    
+    // MARK - Init class variables
     let searchController = UISearchController(searchResultsController: nil)
     
     var sortedRecipies = recipies.sorted(by: { $0.title < $1.title })
     var searchResults = [Recipe]()
     
+    
+    
+    // MARK - Setup table data and search controller on load
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
-        searchController.searchResultsUpdater = self
-        
-        searchController.dimsBackgroundDuringPresentation = false
-        
         tableView.tableHeaderView = searchController.searchBar
         
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
     }
     
     
-    // MARK - Setup table view structure and create cells
+    
+    // MARK - Create table view cells and display data
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -49,17 +53,9 @@ class MasterTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     
-    // MARK: - View Navigation
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) -> Recipe {
-
-        let selectedCell = Recipe(title: sortedRecipies[indexPath.row].title, imageName: sortedRecipies[indexPath.row].imageName, ingredients: sortedRecipies[indexPath.row].ingredients,directions: sortedRecipies[indexPath.row].directions)
-        
-        return selectedCell
-    }
     
+    // MARK - Setup detail view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        searchController.isActive = false
         
         let destination = segue.destination as? DetailViewController
         
@@ -70,10 +66,15 @@ class MasterTableViewController: UITableViewController, UISearchBarDelegate {
                 detailViewController.recipeDirectionsText = sortedRecipies[indexPath.row].directions
             }
         }
+        
+        // TO DO: Resolve table reload flash
+        searchController.isActive = false        
     }
 }
 
 
+
+// MARK - Define search functionality
 extension MasterTableViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {

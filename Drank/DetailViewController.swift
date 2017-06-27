@@ -9,7 +9,9 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    
 
+    // MARK - Get references to interface elements and set default values
     @IBOutlet weak var recipeTitle: UILabel!
     var recipeTitleText: String = "Default recipe title"
     
@@ -19,6 +21,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var recipeDirections: UILabel!
     var recipeDirectionsText = "Default recipe directions"
     
+
+    
+    // MARK - Configure view on load
     override func viewDidLoad() {
         super.viewDidLoad()
         
