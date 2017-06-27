@@ -12,15 +12,19 @@ class MasterTableViewController: UITableViewController, UISearchBarDelegate {
     
     let searchController = UISearchController(searchResultsController: nil)
     
+    var sortedRecipies = [Recipe]().sorted(by: { $0.title < $1.title })
+    var searchResults = [Recipe]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
-        
         searchController.searchResultsUpdater = self
+        
         searchController.dimsBackgroundDuringPresentation = false
         
         tableView.tableHeaderView = searchController.searchBar
+        
     }
     
     
@@ -30,7 +34,7 @@ class MasterTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipies.count
+        return sortedRecipies.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -38,7 +42,7 @@ class MasterTableViewController: UITableViewController, UISearchBarDelegate {
         
         let cellLabel = cell.viewWithTag(1) as? UILabel
         if let label = cellLabel {
-            label.text = recipies[indexPath.row].title
+            label.text = sortedRecipies[indexPath.row].title
         }
         
         return cell
@@ -49,7 +53,7 @@ class MasterTableViewController: UITableViewController, UISearchBarDelegate {
     // TO DO: resolve incorrect details page loading on click after search
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) -> Recipe {
 
-        let selectedCell = Recipe(title: recipies[indexPath.row].title, imageName: recipies[indexPath.row].imageName, ingredients: recipies[indexPath.row].ingredients,directions: recipies[indexPath.row].directions)
+        let selectedCell = Recipe(title: sortedRecipies[indexPath.row].title, imageName: sortedRecipies[indexPath.row].imageName, ingredients: sortedRecipies[indexPath.row].ingredients,directions: sortedRecipies[indexPath.row].directions)
         
         return selectedCell
     }
@@ -60,9 +64,9 @@ class MasterTableViewController: UITableViewController, UISearchBarDelegate {
         
         if let indexPath = tableView.indexPathForSelectedRow {
             if let detailViewController = destination {
-                detailViewController.recipeTitleText = recipies[indexPath.row].title
-                detailViewController.recipeImageName = recipies[indexPath.row].imageName
-                detailViewController.recipeDirectionsText = recipies[indexPath.row].directions
+                detailViewController.recipeTitleText = sortedRecipies[indexPath.row].title
+                detailViewController.recipeImageName = sortedRecipies[indexPath.row].imageName
+                detailViewController.recipeDirectionsText = sortedRecipies[indexPath.row].directions
             }
         }
     }
@@ -74,12 +78,21 @@ extension MasterTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchTerm = searchController.searchBar.text!
         
+        if searchTerm != "" {
+            sortedRecipies = searchResults.sorted(by: { $0.title < $1.title })
+            searchResults.removeAll()
+            print("Search is not empty")
+        } else {
+            sortedRecipies = recipies.sorted(by: { $0.title < $1.title })
+            print("Search is eempty")
+        }
+        
         for recipe in recipies {
             if recipe.title.lowercased().range(of: searchTerm.lowercased()) != nil {
-                print("Found in recipies")
+                searchResults.append(recipe)
             }
         }
         
-        // tableView.reloadData()
+        tableView.reloadData()
     }
 }
