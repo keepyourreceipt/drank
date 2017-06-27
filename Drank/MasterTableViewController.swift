@@ -12,7 +12,7 @@ class MasterTableViewController: UITableViewController, UISearchBarDelegate {
     
     let searchController = UISearchController(searchResultsController: nil)
     
-    var sortedRecipies = [Recipe]().sorted(by: { $0.title < $1.title })
+    var sortedRecipies = recipies.sorted(by: { $0.title < $1.title })
     var searchResults = [Recipe]()
     
     override func viewDidLoad() {
@@ -50,7 +50,6 @@ class MasterTableViewController: UITableViewController, UISearchBarDelegate {
     
     
     // MARK: - View Navigation
-    // TO DO: resolve incorrect details page loading on click after search
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) -> Recipe {
 
         let selectedCell = Recipe(title: sortedRecipies[indexPath.row].title, imageName: sortedRecipies[indexPath.row].imageName, ingredients: sortedRecipies[indexPath.row].ingredients,directions: sortedRecipies[indexPath.row].directions)
@@ -59,6 +58,8 @@ class MasterTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        searchController.isActive = false
         
         let destination = segue.destination as? DetailViewController
         
@@ -81,10 +82,8 @@ extension MasterTableViewController: UISearchResultsUpdating {
         if searchTerm != "" {
             sortedRecipies = searchResults.sorted(by: { $0.title < $1.title })
             searchResults.removeAll()
-            print("Search is not empty")
         } else {
             sortedRecipies = recipies.sorted(by: { $0.title < $1.title })
-            print("Search is eempty")
         }
         
         for recipe in recipies {
