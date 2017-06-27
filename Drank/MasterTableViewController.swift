@@ -18,6 +18,11 @@ class MasterTableViewController: UITableViewController, UISearchBarDelegate {
     var searchResults = [Recipe]()
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        sortedRecipies = recipies.sorted(by: { $0.title < $1.title })
+        tableView.reloadData()
+    }
+    
     
     // MARK - Setup table data and search controller on load
     override func viewDidLoad() {
@@ -68,7 +73,7 @@ class MasterTableViewController: UITableViewController, UISearchBarDelegate {
         }
         
         // TO DO: Resolve table reload flash
-        searchController.isActive = false        
+        searchController.isActive = false
     }
 }
 
@@ -89,10 +94,9 @@ extension MasterTableViewController: UISearchResultsUpdating {
         if searchTerm != "" {
             sortedRecipies = searchResults.sorted(by: { $0.title < $1.title })
             searchResults.removeAll()
-        } else {
+        } else if searchController.isActive == true {
             sortedRecipies = recipies.sorted(by: { $0.title < $1.title })
         }
-        
         
         tableView.reloadData()
     }
