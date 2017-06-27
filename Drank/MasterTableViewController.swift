@@ -80,6 +80,12 @@ extension MasterTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchTerm = searchController.searchBar.text!
         
+        for recipe in recipies {
+            if recipe.title.lowercased().range(of: searchTerm.lowercased()) != nil {
+                searchResults.append(recipe)
+            }
+        }
+        
         if searchTerm != "" {
             sortedRecipies = searchResults.sorted(by: { $0.title < $1.title })
             searchResults.removeAll()
@@ -87,11 +93,6 @@ extension MasterTableViewController: UISearchResultsUpdating {
             sortedRecipies = recipies.sorted(by: { $0.title < $1.title })
         }
         
-        for recipe in recipies {
-            if recipe.title.lowercased().range(of: searchTerm.lowercased()) != nil {
-                searchResults.append(recipe)
-            }
-        }
         
         tableView.reloadData()
     }
