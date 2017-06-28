@@ -33,6 +33,17 @@ class MasterTableViewController: UITableViewController, UISearchBarDelegate {
         
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
+        
+        // Set table view header styles
+        navigationController?.navigationBar.barTintColor = UIColor(red:0.28, green:0.81, blue:0.68, alpha:1)
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
+        // Set searchbar background color
+        searchController.searchBar.barTintColor = UIColor(red:0.28, green:0.81, blue:0.68, alpha:1.0)
+        
+        searchController.searchBar.layer.borderWidth = 1
+        searchController.searchBar.layer.borderColor = UIColor(red:0.28, green:0.81, blue:0.68, alpha:1.0).cgColor
     }
     
     
