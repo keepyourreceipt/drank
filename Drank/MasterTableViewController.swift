@@ -14,7 +14,7 @@ class MasterTableViewController: UITableViewController, UISearchBarDelegate {
     // MARK - Init class variables
     let searchController = UISearchController(searchResultsController: nil)
     
-    var sortedRecipies = recipies.sorted(by: { $0.title < $1.title })
+    var sortedRecipies = [Recipe]()
     var searchResults = [Recipe]()
     
     
