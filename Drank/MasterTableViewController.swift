@@ -35,15 +35,19 @@ class MasterTableViewController: UITableViewController, UISearchBarDelegate {
         searchController.dimsBackgroundDuringPresentation = false
         
         // Set table view header styles
-        navigationController?.navigationBar.barTintColor = UIColor(red:0.28, green:0.81, blue:0.68, alpha:1)
+        navigationController?.navigationBar.barTintColor = UIColor(red:0.28, green:0.81, blue:0.68, alpha:1.0)
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        // Set searchbar background color
-        searchController.searchBar.barTintColor = UIColor(red:0.28, green:0.81, blue:0.68, alpha:1.0)
         
-        searchController.searchBar.layer.borderWidth = 1
-        searchController.searchBar.layer.borderColor = UIColor(red:0.28, green:0.81, blue:0.68, alpha:1.0).cgColor
+        // Set searchbar styles
+        searchController.searchBar.barTintColor = UIColor(red:0.40, green:0.40, blue:0.40, alpha:1.0)
+        
+        let attributes = [
+            NSForegroundColorAttributeName : UIColor.white,
+            NSFontAttributeName : UIFont.systemFont(ofSize: 17)
+        ]
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(attributes, for: .normal)
     }
     
     
