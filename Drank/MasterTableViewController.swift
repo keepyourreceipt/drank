@@ -54,7 +54,7 @@ class MasterTableViewController: UITableViewController, UISearchBarDelegate {
         
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(attributes, for: .normal)
         
-        let image = UIImage(named: "androidLogo")
+        let image = UIImage(named: "drankLogo")
         navigationItem.titleView = UIImageView(image: image)
         
         
